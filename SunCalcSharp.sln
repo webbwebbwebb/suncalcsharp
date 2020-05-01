@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunCalcSharp", "src\SunCalcSharp\SunCalcSharp.csproj", "{5D5181B4-5D61-4B1C-9988-A9BDE885249E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunCalcSharp.Tests", "tests\SunCalcSharp.Tests\SunCalcSharp.Tests.csproj", "{4729C532-5E9E-4324-9397-92EB924286B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D5181B4-5D61-4B1C-9988-A9BDE885249E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D5181B4-5D61-4B1C-9988-A9BDE885249E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D5181B4-5D61-4B1C-9988-A9BDE885249E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D5181B4-5D61-4B1C-9988-A9BDE885249E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4729C532-5E9E-4324-9397-92EB924286B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4729C532-5E9E-4324-9397-92EB924286B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4729C532-5E9E-4324-9397-92EB924286B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4729C532-5E9E-4324-9397-92EB924286B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E807CBFD-AA31-47BA-A3E5-10E920ACB76F}
+	EndGlobalSection
+EndGlobal
