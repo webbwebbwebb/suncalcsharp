@@ -8,11 +8,17 @@ namespace SunCalcSharp
     {
         // sun calculations are based on http://aa.quae.nl/en/reken/zonpositie.html formulas
 
-        // calculates sun position for a given date and latitude/longitude
-        public static SunPosition GetPosition(DateTime date, double lat, double lng)
+        /// <summary>
+        /// Calculates solar position for a given location and point in time
+        /// </summary>
+        /// <param name="date">time and date calculate for</param>
+        /// <param name="latitude">latitude in degrees</param>
+        /// <param name="longitude">longitude in degrees</param>
+        /// <returns></returns>
+        public static SunPosition GetPosition(DateTime date, double latitude, double longitude)
         {
-            double lw = Constants.Rad * -lng;
-            double phi = Constants.Rad * lat;
+            double lw = Constants.Rad * -longitude;
+            double phi = Constants.Rad * latitude;
             double d = Calendar.ToDays(date);
 
             SunCoordinates c = Sun.Coordinates(d);
@@ -25,12 +31,19 @@ namespace SunCalcSharp
             };
         }
 
-        // calculates sun times for a given date, latitude/longitude, and, optionally,
-        // the observer height (in meters) relative to the horizon
-        public static SunTimes GetTimes(DateTime date, double lat, double lng, double height = 0)
+        /// <summary>
+        /// Calculates sun times for a given date, latitude/longitude, and, optionally,
+        /// the observer height (in meters) relative to the horizon
+        /// </summary>
+        /// <param name="date">date to calculate for</param>
+        /// <param name="latitude">latitude in degrees</param>
+        /// <param name="longitude">longitude in degrees</param>
+        /// <param name="height">observer height relative to the horizon in metres (optional)</param>
+        /// <returns></returns>
+        public static SunTimes GetTimes(DateTime date, double latitude, double longitude, double height = 0)
         {
-            var lw = Constants.Rad * -lng;
-            var phi = Constants.Rad * lat;
+            var lw = Constants.Rad * -longitude;
+            var phi = Constants.Rad * latitude;
 
             var dh = Sun.ObserverAngle(height);
 
@@ -64,7 +77,7 @@ namespace SunCalcSharp
             return result;
         }
 
-        // sun times configuration (angle, morning name, evening name)
+        // sun times configuration (angle, morning property setter, evening property setter)
         private static readonly List<SunAngleTime> Times = new List<SunAngleTime>
         {
             new SunAngleTime(-0.833, (t, v) => t.Sunrise = v, (t, v) => t.Sunset = v),

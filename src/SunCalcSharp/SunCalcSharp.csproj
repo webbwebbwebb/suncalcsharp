@@ -7,14 +7,18 @@
     
     <Description>.NET library for calculating sun/moon positions and phases.
 
-SunCalc was ported from the SunCalc JavaScript library.</Description>
+Ported from the SunCalc JavaScript library.</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/webbwebbwebb/suncalcsharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/webbwebbwebb/suncalcsharp</RepositoryUrl>
-    <PackageTags>sunrise sunset</PackageTags>
+    <PackageTags>sunrise sunset solar lunar</PackageTags>
     <RepositoryType>git</RepositoryType>
     <Copyright>Copyright © Mark Webb 2020</Copyright>
-    <Version>1.0.0</Version>
+    <Version>1.0.2</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
