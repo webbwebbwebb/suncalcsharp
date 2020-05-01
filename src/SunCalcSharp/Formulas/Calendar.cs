@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SunCalcSharp
+namespace SunCalcSharp.Formulas
 {
     internal static class Calendar
     {
@@ -9,19 +9,19 @@ namespace SunCalcSharp
         public const double J1970 = 2440588;
         public const double J2000 = 2451545;
 
-        public static double toJulian(DateTime date)
+        public static double ToJulian(DateTime date)
         {
             return new DateTimeOffset(date).ToUnixTimeMilliseconds() / dayMs - 0.5 + J1970;
         }
 
-        public static DateTime fromJulian(double j)
+        public static DateTime FromJulian(double j)
         {
             return DateTimeOffset.FromUnixTimeMilliseconds((long)((j + 0.5 - J1970) * dayMs)).UtcDateTime;
         }
 
-        public static double toDays(DateTime date)
+        public static double ToDays(DateTime date)
         {
-            return toJulian(date) - J2000;
+            return ToJulian(date) - J2000;
         }
     }
 }

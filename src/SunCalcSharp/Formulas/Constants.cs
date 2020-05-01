@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace SunCalcSharp
+namespace SunCalcSharp.Formulas
 {
     internal static class Constants
     {
-        public static double rad = Math.PI / 180;
+        public static double Rad = Math.PI / 180;
     }
 }

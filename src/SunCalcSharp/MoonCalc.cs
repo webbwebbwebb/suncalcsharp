@@ -1,4 +1,6 @@
 ﻿using System;
+using SunCalcSharp.Dtos;
+using SunCalcSharp.Formulas;
 
 namespace SunCalcSharp
 {
@@ -7,24 +9,24 @@ namespace SunCalcSharp
         // moon calculations, based on http://aa.quae.nl/en/reken/hemelpositie.html formulas
         public static MoonPosition GetMoonPosition(DateTime date, double lat, double lng)
         {
-            var lw = Constants.rad * -lng;
-            var phi = Constants.rad * lat;
-            var d = Calendar.toDays(date);
+            var lw = Constants.Rad * -lng;
+            var phi = Constants.Rad * lat;
+            var d = Calendar.ToDays(date);
 
-            var c = MoonCalculations.moonCoords(d);
-            var H = PositionCalculations.siderealTime(d, lw) - c.ra;
-            var h = PositionCalculations.altitude(H, phi, c.dec);
+            var c = Moon.Coordinates(d);
+            var H = Position.SiderealTime(d, lw) - c.RightAscension;
+            var h = Position.Altitude(H, phi, c.Declination);
             // formula 14.1 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
-            var pa = Math.Atan2(Math.Sin(H), Math.Tan(phi) * Math.Cos(c.dec) - Math.Sin(c.dec) * Math.Cos(H));
+            var pa = Math.Atan2(Math.Sin(H), Math.Tan(phi) * Math.Cos(c.Declination) - Math.Sin(c.Declination) * Math.Cos(H));
 
-            h = h + MoonCalculations.astroRefraction(h); // altitude correction for refraction
+            h = h + Moon.AstroRefraction(h); // altitude correction for refraction
 
             return new MoonPosition
             {
-                azimuth = PositionCalculations.azimuth(H, phi, c.dec),
-                altitude = h,
-                distance = c.dist,
-                parallacticAngle = pa
+                Azimuth = Position.Azimuth(H, phi, c.Declination),
+                Altitude = h,
+                Distance = c.Distance,
+                ParallacticAngle = pa
             };
         }
 
@@ -33,20 +35,20 @@ namespace SunCalcSharp
         // Chapter 48 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
         public static MoonIllumination GetMoonIllumination(DateTime date)
         {
-            var d = Calendar.toDays(date);
-            var s = SunCalculations.sunCoords(d);
-            var m = MoonCalculations.moonCoords(d);
+            var d = Calendar.ToDays(date);
+            var s = Sun.Coordinates(d);
+            var m = Moon.Coordinates(d);
 
             const int sdist = 149598000; // distance from Earth to Sun in km
-            var phi = Math.Acos(Math.Sin(s.dec) * Math.Sin(m.dec) + Math.Cos(s.dec) * Math.Cos(m.dec) * Math.Cos(s.ra - m.ra));
-            var inc = Math.Atan2(sdist * Math.Sin(phi), m.dist - sdist * Math.Cos(phi));
-            var angle = Math.Atan2(Math.Cos(s.dec) * Math.Sin(s.ra - m.ra), Math.Sin(s.dec) * Math.Cos(m.dec) - Math.Cos(s.dec) * Math.Sin(m.dec) * Math.Cos(s.ra - m.ra));
+            var phi = Math.Acos(Math.Sin(s.Declination) * Math.Sin(m.Declination) + Math.Cos(s.Declination) * Math.Cos(m.Declination) * Math.Cos(s.RightAscension - m.RightAscension));
+            var inc = Math.Atan2(sdist * Math.Sin(phi), m.Distance - sdist * Math.Cos(phi));
+            var angle = Math.Atan2(Math.Cos(s.Declination) * Math.Sin(s.RightAscension - m.RightAscension), Math.Sin(s.Declination) * Math.Cos(m.Declination) - Math.Cos(s.Declination) * Math.Sin(m.Declination) * Math.Cos(s.RightAscension - m.RightAscension));
 
             return new MoonIllumination
             {
-                fraction = (1 + Math.Cos(inc)) / 2,
-                phase = 0.5 + 0.5 * inc * (angle < 0 ? -1 : 1) / Math.PI,
-                angle = angle
+                Fraction = (1 + Math.Cos(inc)) / 2,
+                Phase = 0.5 + 0.5 * inc * (angle < 0 ? -1 : 1) / Math.PI,
+                Angle = angle
             };
         }
 
@@ -55,16 +57,16 @@ namespace SunCalcSharp
         {
             DateTime t = date.Date;
 
-            var hc = 0.133 * Constants.rad;
-            var h0 = GetMoonPosition(t, lat, lng).altitude - hc;
+            var hc = 0.133 * Constants.Rad;
+            var h0 = GetMoonPosition(t, lat, lng).Altitude - hc;
 
             int roots;
             double h1, h2, rise = 0, set = 0, a, b, xe, ye = 0, d, x1 = 0, x2 = 0, dx;
             // go in 2-hour chunks, each time seeing if a 3-point quadratic curve crosses zero (which means rise or set)
             for (var i = 1; i <= 24; i += 2)
             {
-                h1 = GetMoonPosition(t.AddHours(i), lat, lng).altitude - hc;
-                h2 = GetMoonPosition(t.AddHours(i + 1), lat, lng).altitude - hc;
+                h1 = GetMoonPosition(t.AddHours(i), lat, lng).Altitude - hc;
+                h2 = GetMoonPosition(t.AddHours(i + 1), lat, lng).Altitude - hc;
 
                 a = (h0 + h2) / 2 - h1;
                 b = (h2 - h0) / 2;
@@ -105,23 +107,23 @@ namespace SunCalcSharp
 
             if (rise > 0)
             {
-                result.rise = t.AddHours(rise);
+                result.Rise = t.AddHours(rise);
             }
 
             if (set > 0)
             {
-                result.set = t.AddHours(set);
+                result.Set = t.AddHours(set);
             }
 
             if (rise <= 0 && set <= 0)
             {
                 if (ye > 0)
                 {
-                    result.alwaysUp = true;
+                    result.AlwaysUp = true;
                 }
                 else
                 {
-                    result.alwaysDown = true;
+                    result.AlwaysDown = true;
                 }
             }
 

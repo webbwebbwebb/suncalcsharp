@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SunCalcSharp
+﻿namespace SunCalcSharp.Dtos
 {
     public static class SunPhaseNames
     {
