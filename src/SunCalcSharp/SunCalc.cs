@@ -10,12 +10,12 @@ namespace SunCalcSharp
         // sun times configuration (angle, morning name, evening name)
         private static readonly List<SunPositionTime> Times = new List<SunPositionTime>
         {
-            new SunPositionTime(-0.833, SunPhaseNames.Sunrise, SunPhaseNames.Sunset),
-            new SunPositionTime(-0.3, SunPhaseNames.SunriseEnd, SunPhaseNames.SunsetStart),
-            new SunPositionTime(-6, SunPhaseNames.Dawn, SunPhaseNames.Dusk),
-            new SunPositionTime(-12, SunPhaseNames.NauticalDawn, SunPhaseNames.NauticalDusk),
-            new SunPositionTime(-18, SunPhaseNames.NightEnd, SunPhaseNames.Night),
-            new SunPositionTime(6, SunPhaseNames.GoldenHourEnd, SunPhaseNames.GoldenHour)
+            new SunPositionTime(-0.833, (t, v) => t.Sunrise = v, (t, v) => t.Sunset = v),
+            new SunPositionTime(-0.3, (t, v) => t.SunriseEnd = v, (t, v) => t.SunsetStart = v),
+            new SunPositionTime(-6, (t, v) => t.Dawn = v, (t, v) => t.Dusk= v),
+            new SunPositionTime(-12, (t, v) => t.NauticalDawn= v, (t, v) => t.NauticalDusk= v), 
+            new SunPositionTime(-18, (t, v) => t.NightEnd= v, (t, v) => t.Night= v),
+            new SunPositionTime(6, (t, v) => t.GoldenHourEnd= v, (t, v) => t.GoldenHour= v)
         };
 
         // sun calculations are based on http://aa.quae.nl/en/reken/zonpositie.html formulas
@@ -39,7 +39,7 @@ namespace SunCalcSharp
 
         // calculates sun times for a given date, latitude/longitude, and, optionally,
         // the observer height (in meters) relative to the horizon
-        public static Dictionary<string, DateTime> GetTimes(DateTime date, double lat, double lng, double height = 0)
+        public static SunTimes GetTimes(DateTime date, double lat, double lng, double height = 0)
         {
             var lw = Constants.Rad * -lng;
             var phi = Constants.Rad * lat;
@@ -56,10 +56,10 @@ namespace SunCalcSharp
 
             var Jnoon = Sun.SolarTransitJ(ds, M, L);
 
-            var result = new Dictionary<string, DateTime>
+            var result = new SunTimes
             {
-                {SunPhaseNames.SolarNoon, Calendar.FromJulian(Jnoon)},
-                {SunPhaseNames.Nadir, Calendar.FromJulian(Jnoon - 0.5)},
+                SolarNoon = Calendar.FromJulian(Jnoon),
+                Nadir = Calendar.FromJulian(Jnoon - 0.5)
             };
 
             for (int i = 0, len = Times.Count; i < len; i += 1)
@@ -69,8 +69,8 @@ namespace SunCalcSharp
                 var Jset = Sun.GetSetJ(h0, lw, phi, dec, n, M, L);
                 var Jrise = Jnoon - (Jset - Jnoon);
 
-                result.Add(time.RiseName, Calendar.FromJulian(Jrise));
-                result.Add(time.SetName, Calendar.FromJulian(Jset));
+                time.SetRiseProperty(result, Calendar.FromJulian(Jrise));
+                time.SetSetProperty(result, Calendar.FromJulian(Jset));
             }
 
             return result;

@@ -65,7 +65,7 @@ namespace SunCalcSharp.Tests
         {
             var moonTimes = MoonCalc.GetMoonTimes(_date.AddDays(-1), _lat, _lng);
 
-            moonTimes.Rise.ToString("yyyy-MM-ddTHH:mm:ssK").Should().Be("2013-03-04T23:54:29Z");
+            moonTimes.Rise.ToDateString().Should().Be("2013-03-04T23:54:29Z");
         }
 
         [TestMethod]
@@ -73,7 +73,7 @@ namespace SunCalcSharp.Tests
         {
             var moonTimes = MoonCalc.GetMoonTimes(_date.AddDays(-1), _lat, _lng);
 
-            moonTimes.Set.ToString("yyyy-MM-ddTHH:mm:ssK").Should().Be("2013-03-04T07:47:58Z");
+            moonTimes.Set.ToDateString().Should().Be("2013-03-04T07:47:58Z");
         }
     }
 }

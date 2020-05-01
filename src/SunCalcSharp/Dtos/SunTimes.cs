@@ -1,75 +1,77 @@
-﻿namespace SunCalcSharp.Dtos
+﻿using System;
+
+namespace SunCalcSharp.Dtos
 {
-    public static class SunPhaseNames
+    public class SunTimes
     {
         /// <summary>
         /// sunrise (top edge of the sun appears on the horizon)
         /// </summary>
-        public const string Sunrise = "sunrise";
+        public DateTime Sunrise;
 
         /// <summary>
         /// sunrise ends (bottom edge of the sun touches the horizon)
         /// </summary>
-        public const string SunriseEnd = "sunriseEnd";
+        public DateTime SunriseEnd;
 
         /// <summary>
         /// morning golden hour (soft light, best time for photography) ends
         /// </summary>
-        public const string GoldenHourEnd = "goldenHourEnd";
+        public DateTime GoldenHourEnd;
 
         /// <summary>
         /// solar noon (sun is in the highest position)
         /// </summary>
-        public const string SolarNoon = "solarNoon";
+        public DateTime SolarNoon;
 
         /// <summary>
         /// evening golden hour starts
         /// </summary>
-        public const string GoldenHour = "goldenHour";
+        public DateTime GoldenHour;
 
         /// <summary>
         /// sunset starts (bottom edge of the sun touches the horizon)
         /// </summary>
-        public const string SunsetStart = "sunsetStart";
+        public DateTime SunsetStart;
 
         /// <summary>
         /// sunset (sun disappears below the horizon, evening civil twilight starts)
         /// </summary>
-        public const string Sunset = "sunset";
+        public DateTime Sunset;
 
         /// <summary>
         /// dusk (evening nautical twilight starts)
         /// </summary>
-        public const string Dusk = "dusk";
+        public DateTime Dusk;
 
         /// <summary>
         /// nautical dusk (evening astronomical twilight starts)
         /// </summary>
-        public const string NauticalDusk = "nauticalDusk";
+        public DateTime NauticalDusk;
 
         /// <summary>
         /// night starts (dark enough for astronomical observations)
         /// </summary>
-        public const string Night = "night";
+        public DateTime Night;
 
         /// <summary>
         /// nadir (darkest moment of the night, sun is in the lowest position)
         /// </summary>
-        public const string Nadir = "nadir";
+        public DateTime Nadir;
 
         /// <summary>
         /// night ends (morning astronomical twilight starts)
         /// </summary>
-        public const string NightEnd = "nightEnd";
+        public DateTime NightEnd;
 
         /// <summary>
         /// nautical dawn (morning nautical twilight starts)
         /// </summary>
-        public const string NauticalDawn = "nauticalDawn";
+        public DateTime NauticalDawn;
 
         /// <summary>
         /// dawn (morning nautical twilight ends, morning civil twilight starts)
         /// </summary>
-        public const string Dawn = "dawn";
+        public DateTime Dawn;
     }
 }

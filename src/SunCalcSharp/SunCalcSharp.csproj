@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Mark Webb</Authors>
     <Company />
+    
     <Description>.NET library for calculating sun/moon positions and phases.
 
 SunCalc was ported from the SunCalc JavaScript library.</Description>
@@ -13,7 +14,7 @@ SunCalc was ported from the SunCalc JavaScript library.</Description>
     <PackageTags>sunrise sunset</PackageTags>
     <RepositoryType>git</RepositoryType>
     <Copyright>Copyright © Mark Webb 2020</Copyright>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
