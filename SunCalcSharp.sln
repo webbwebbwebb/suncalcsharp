@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunCalcSharp", "src\SunCalcSharp\SunCalcSharp.csproj", "{5D5181B4-5D61-4B1C-9988-A9BDE885249E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunCalcSharp.Tests", "tests\SunCalcSharp.Tests\SunCalcSharp.Tests.csproj", "{4729C532-5E9E-4324-9397-92EB924286B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunCalcSharp.Tests", "src\SunCalcSharp.Tests\SunCalcSharp.Tests.csproj", "{4729C532-5E9E-4324-9397-92EB924286B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
