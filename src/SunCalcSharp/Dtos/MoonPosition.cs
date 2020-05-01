@@ -1,4 +1,4 @@
-﻿namespace SunCalcSharp.Dtos
+﻿namespace SunCalcSharp
 {
     public class MoonPosition
     {

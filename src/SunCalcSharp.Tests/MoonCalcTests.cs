@@ -10,7 +10,6 @@ namespace SunCalcSharp.Tests
         private readonly  DateTime _date = DateTime.SpecifyKind(DateTime.Parse("2013-03-05"), DateTimeKind.Utc);
         private readonly  double _lat = 50.5;
         private readonly  double _lng = 30.5;
-        private readonly  double _height = 2000;
 
         [TestMethod]
         public void GetMoonPosition_returns_azimuth_given_time_and_location()

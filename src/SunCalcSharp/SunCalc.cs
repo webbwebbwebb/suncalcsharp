@@ -1,23 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using SunCalcSharp.Dtos;
 using SunCalcSharp.Formulas;
 
 namespace SunCalcSharp
 {
     public static class SunCalc
     {
-        // sun times configuration (angle, morning name, evening name)
-        private static readonly List<SunPositionTime> Times = new List<SunPositionTime>
-        {
-            new SunPositionTime(-0.833, (t, v) => t.Sunrise = v, (t, v) => t.Sunset = v),
-            new SunPositionTime(-0.3, (t, v) => t.SunriseEnd = v, (t, v) => t.SunsetStart = v),
-            new SunPositionTime(-6, (t, v) => t.Dawn = v, (t, v) => t.Dusk= v),
-            new SunPositionTime(-12, (t, v) => t.NauticalDawn= v, (t, v) => t.NauticalDusk= v), 
-            new SunPositionTime(-18, (t, v) => t.NightEnd= v, (t, v) => t.Night= v),
-            new SunPositionTime(6, (t, v) => t.GoldenHourEnd= v, (t, v) => t.GoldenHour= v)
-        };
-
         // sun calculations are based on http://aa.quae.nl/en/reken/zonpositie.html formulas
 
         // calculates sun position for a given date and latitude/longitude
@@ -75,5 +63,16 @@ namespace SunCalcSharp
 
             return result;
         }
+
+        // sun times configuration (angle, morning name, evening name)
+        private static readonly List<SunAngleTime> Times = new List<SunAngleTime>
+        {
+            new SunAngleTime(-0.833, (t, v) => t.Sunrise = v, (t, v) => t.Sunset = v),
+            new SunAngleTime(-0.3, (t, v) => t.SunriseEnd = v, (t, v) => t.SunsetStart = v),
+            new SunAngleTime(-6, (t, v) => t.Dawn = v, (t, v) => t.Dusk= v),
+            new SunAngleTime(-12, (t, v) => t.NauticalDawn= v, (t, v) => t.NauticalDusk= v), 
+            new SunAngleTime(-18, (t, v) => t.NightEnd= v, (t, v) => t.Night= v),
+            new SunAngleTime(6, (t, v) => t.GoldenHourEnd= v, (t, v) => t.GoldenHour= v)
+        };
     }
 }

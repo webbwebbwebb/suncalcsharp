@@ -1,4 +1,4 @@
-﻿namespace SunCalcSharp.Dtos
+﻿namespace SunCalcSharp
 {
     internal class SunCoordinates
     {

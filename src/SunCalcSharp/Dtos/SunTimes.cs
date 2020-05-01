@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SunCalcSharp.Dtos
+namespace SunCalcSharp
 {
     public class SunTimes
     {

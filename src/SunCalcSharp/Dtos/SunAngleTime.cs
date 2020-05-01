@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace SunCalcSharp.Dtos
+namespace SunCalcSharp
 {
-    internal class SunPositionTime
+    internal class SunAngleTime
     {
-        public SunPositionTime(double angle, Action<SunTimes, DateTime> setRiseProperty, Action<SunTimes, DateTime> setSetProperty)
+        public SunAngleTime(double angle, Action<SunTimes, DateTime> setRiseProperty, Action<SunTimes, DateTime> setSetProperty)
         {
             Angle = angle;
             SetRiseProperty = setRiseProperty;

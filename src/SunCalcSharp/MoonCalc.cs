@@ -1,5 +1,4 @@
 ﻿using System;
-using SunCalcSharp.Dtos;
 using SunCalcSharp.Formulas;
 
 namespace SunCalcSharp
