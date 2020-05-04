@@ -55,11 +55,12 @@ namespace SunCalcSharp
             var phi = Math.Acos(Math.Sin(s.Declination) * Math.Sin(m.Declination) + Math.Cos(s.Declination) * Math.Cos(m.Declination) * Math.Cos(s.RightAscension - m.RightAscension));
             var inc = Math.Atan2(sdist * Math.Sin(phi), m.Distance - sdist * Math.Cos(phi));
             var angle = Math.Atan2(Math.Cos(s.Declination) * Math.Sin(s.RightAscension - m.RightAscension), Math.Sin(s.Declination) * Math.Cos(m.Declination) - Math.Cos(s.Declination) * Math.Sin(m.Declination) * Math.Cos(s.RightAscension - m.RightAscension));
+            var progressThroughCycle = 0.5 + 0.5 * inc * (angle < 0 ? -1 : 1) / Math.PI;
 
             return new MoonIllumination
             {
                 Fraction = (1 + Math.Cos(inc)) / 2,
-                Phase = 0.5 + 0.5 * inc * (angle < 0 ? -1 : 1) / Math.PI,
+                Phase = MoonPhaseMapper.FromProgressThroughCycle(progressThroughCycle),
                 Angle = angle
             };
         }

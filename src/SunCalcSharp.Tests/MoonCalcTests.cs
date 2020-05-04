@@ -56,7 +56,7 @@ namespace SunCalcSharp.Tests
         {
             var moonIllumination = MoonCalc.GetMoonIllumination(_date);
 
-            moonIllumination.Phase.Should().BeApproximately(0.7548368838538762, 1e-15);
+            moonIllumination.Phase.Should().Be(MoonPhase.WaningCrescent);
         }
 
         [TestMethod]

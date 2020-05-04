@@ -15,6 +15,7 @@ Ported from the SunCalc JavaScript library.</Description>
     <RepositoryType>git</RepositoryType>
     <Copyright>Copyright © Mark Webb 2020</Copyright>
     <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <PropertyGroup>
