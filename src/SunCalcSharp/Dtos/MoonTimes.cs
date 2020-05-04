@@ -2,6 +2,9 @@
 
 namespace SunCalcSharp
 {
+    /// <summary>
+    /// Contains times for when the moon rises and sets each day
+    /// </summary>
     public class MoonTimes
     {
         /// <summary>

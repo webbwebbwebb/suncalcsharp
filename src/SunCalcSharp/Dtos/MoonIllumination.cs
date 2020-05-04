@@ -1,5 +1,8 @@
 ﻿namespace SunCalcSharp
 {
+    /// <summary>
+    /// Contains properties relating to the illumination of the moon
+    /// </summary>
     public class MoonIllumination
     {
         /// <summary>

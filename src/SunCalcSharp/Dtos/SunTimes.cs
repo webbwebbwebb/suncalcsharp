@@ -2,6 +2,9 @@
 
 namespace SunCalcSharp
 {
+    /// <summary>
+    /// Contains times for each of the events of the sun on a given day
+    /// </summary>
     public class SunTimes
     {
         /// <summary>

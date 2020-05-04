@@ -3,6 +3,9 @@ using SunCalcSharp.Formulas;
 
 namespace SunCalcSharp
 {
+    /// <summary>
+    /// Calculate lunar movement
+    /// </summary>
     public static class MoonCalc
     {
         /// <summary>

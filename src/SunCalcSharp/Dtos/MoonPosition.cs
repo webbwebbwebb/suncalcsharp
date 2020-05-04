@@ -1,5 +1,8 @@
 ﻿namespace SunCalcSharp
 {
+    /// <summary>
+    /// Contains properties relating to the position of the moon
+    /// </summary>
     public class MoonPosition
     {
         /// <summary>

@@ -4,10 +4,13 @@ using SunCalcSharp.Formulas;
 
 namespace SunCalcSharp
 {
+    /// <summary>
+    /// Calculate sun movement
+    ///
+    /// Calculations are based on http://aa.quae.nl/en/reken/zonpositie.html formulas
+    /// </summary>
     public static class SunCalc
     {
-        // sun calculations are based on http://aa.quae.nl/en/reken/zonpositie.html formulas
-
         /// <summary>
         /// Calculates solar position for a given location and point in time
         /// </summary>
