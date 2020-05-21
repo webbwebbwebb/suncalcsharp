@@ -149,5 +149,14 @@ namespace SunCalcSharp.Tests
             times.Sunrise.ToDateString().Should().Be("2013-03-05T04:25:07Z");
             times.Sunset.ToDateString().Should().Be("2013-03-05T15:56:46Z");
         }
+
+        [TestMethod]
+        public void GetTimes_returns_null_if_event_does_not_occur()
+        {
+            var times = SunCalc.GetTimes(DateTime.Parse("2020-05-21 12:00:00"), 51.9947, -1.4819);
+
+            times.Night.Should().BeNull();
+            times.NightEnd.Should().BeNull();
+        }
     }
 }

@@ -10,12 +10,12 @@ namespace SunCalcSharp
         /// <summary>
         /// Time of moon rise
         /// </summary>
-        public DateTime Rise;
+        public DateTime? Rise;
 
         /// <summary>
         /// Time of moon set
         /// </summary>
-        public DateTime Set;
+        public DateTime? Set;
 
         /// <summary>
         /// True if the moon never rises/sets and is always above the horizon during the day

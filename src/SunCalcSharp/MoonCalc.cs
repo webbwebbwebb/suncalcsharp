@@ -29,7 +29,7 @@ namespace SunCalcSharp
             // formula 14.1 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
             var pa = Math.Atan2(Math.Sin(H), Math.Tan(phi) * Math.Cos(c.Declination) - Math.Sin(c.Declination) * Math.Cos(H));
 
-            h = h + Moon.AstroRefraction(h); // altitude correction for refraction
+            h += Moon.AstroRefraction(h); // altitude correction for refraction
 
             return new MoonPosition
             {

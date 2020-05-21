@@ -14,7 +14,7 @@ Ported from the SunCalc JavaScript library.</Description>
     <PackageTags>sunrise sunset solar lunar</PackageTags>
     <RepositoryType>git</RepositoryType>
     <Copyright>Copyright © Mark Webb 2020</Copyright>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
   </PropertyGroup>
 
   <PropertyGroup>

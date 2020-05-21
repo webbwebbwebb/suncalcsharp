@@ -71,10 +71,12 @@ namespace SunCalcSharp
                 var time = Times[i];
                 var h0 = (time.Angle + dh) * Constants.Rad;
                 var Jset = Sun.GetSetJ(h0, lw, phi, dec, n, M, L);
-                var Jrise = Jnoon - (Jset - Jnoon);
-
-                time.SetRiseProperty(result, Calendar.FromJulian(Jrise));
-                time.SetSetProperty(result, Calendar.FromJulian(Jset));
+                if (!double.IsNaN(Jset))
+                {
+                    var Jrise = Jnoon - (Jset - Jnoon);
+                    time.SetRiseProperty(result, Calendar.FromJulian(Jrise));
+                    time.SetSetProperty(result, Calendar.FromJulian(Jset));
+                }
             }
 
             return result;
