@@ -68,6 +68,16 @@
                 return MoonPhase.WaxingCrescent;
             }
 
+            if (progressThroughCycle == 0.25)
+            {
+                return MoonPhase.FirstQuarter;
+            }
+
+            if (progressThroughCycle > 0.25 && progressThroughCycle < 0.5)
+            {
+                return MoonPhase.WaxingGibbous;
+            }
+
             if (progressThroughCycle == 0.5)
             {
                 return MoonPhase.FullMoon;
